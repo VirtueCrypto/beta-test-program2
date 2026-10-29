@@ -1,0 +1,243 @@
+{
+  "schema_version": "1.0",
+  "dashboard": {
+    "title": "Beta Testing Program Dashboard",
+    "project_name": "{{PROJECT_NAME}}",
+    "product_area": "{{PRODUCT_AREA}}",
+    "program_owner": "{{OWNER_NAME_AND_ROLE}}",
+    "status": "{{PLANNING | RECRUITING | ACTIVE | PAUSED | COMPLETE}}",
+    "beta_type": "{{CLOSED | INVITE_ONLY | OPEN | INTERNAL | PHASED}}",
+    "start_date": "{{YYYY-MM-DD}}",
+    "end_date": "{{YYYY-MM-DD}}",
+    "decision_date": "{{YYYY-MM-DD}}",
+    "last_updated": "{{YYYY-MM-DDTHH:MM:SSZ}}",
+    "summary": "{{WHAT_IS_BEING_TESTED_FOR_WHOM_AND_WHAT_DECISION_THIS_BETA_INFORMS}}",
+    "navigation": ["Overview", "Participants", "Goals & metrics", "Issues", "Timeline", "Decision"]
+  },
+  "program_documentation": {
+    "purpose": "Validate the product's highest-risk assumptions with real-world users and produce evidence for a defined product or release decision.",
+    "business_context": "{{WHY_THIS_BETA_IS_NEEDED_NOW}}",
+    "product_hypothesis": "{{PRODUCT_HYPOTHESIS}}",
+    "in_scope": ["{{FEATURE_OR_JOURNEY}}"],
+    "out_of_scope": ["{{EXCLUDED_FEATURE_OR_USE_CASE}}"],
+    "known_limitations": ["{{LIMITATION_PARTICIPANTS_SHOULD_KNOW}}"],
+    "assumptions": ["{{ASSUMPTION}}"],
+    "dependencies": ["{{DEPENDENCY_AND_OWNER}}"],
+    "constraints": ["{{TIMING_BUDGET_STAFFING_TECHNICAL_OR_MARKET_CONSTRAINT}}"],
+    "program_goals": [
+      {
+        "id": "G1",
+        "name": "{{GOAL_NAME}}",
+        "hypothesis": "{{TESTABLE_HYPOTHESIS}}",
+        "evidence_needed": "{{METRIC_RESEARCH_OR_QUALITATIVE_EVIDENCE}}",
+        "decision_informed": "{{DECISION}}",
+        "priority": "{{P0 | P1 | P2}}"
+      }
+    ]
+  },
+  "participants": {
+    "target_enrollment": 0,
+    "minimum_enrollment": 0,
+    "maximum_enrollment": 0,
+    "enrolled": 0,
+    "active": 0,
+    "withdrawn": 0,
+    "segments": [
+      {
+        "segment_id": "S1",
+        "name": "{{PERSONA_OR_SEGMENT}}",
+        "needs_and_context": "{{USER_NEED_AND_USE_CONTEXT}}",
+        "relevance_to_goal": "{{WHY_THIS_SEGMENT_MATTERS}}",
+        "target_count": 0,
+        "enrolled_count": 0,
+        "eligibility": ["{{NECESSARY_ELIGIBILITY_CRITERION}}"],
+        "recruitment_channel": "{{CHANNEL}}"
+      }
+    ],
+    "representation_dimensions": {
+      "geography_and_language": ["{{REGION_OR_LANGUAGE}}"],
+      "devices_and_platforms": ["{{DEVICE_OS_BROWSER}}"],
+      "accessibility_needs": ["{{RELEVANT_NEED_OR_NOT_APPLICABLE}}"],
+      "experience_levels": ["{{NEW_INTERMEDIATE_EXPERT}}"],
+      "other_relevant_context": ["{{CONTEXT}}"]
+    },
+    "recruitment": {
+      "screener": [
+        {"question": "{{QUESTION}}", "qualifying_answer": "{{ANSWER_OR_RULE}}"}
+      ],
+      "exclusion_criteria": ["{{CRITERION}}"],
+      "incentive_and_terms": "{{INCENTIVE_AND_CONDITIONS}}",
+      "waitlist_and_replacement_process": "{{PROCESS}}"
+    },
+    "sampling_note": "Choose sample size to fit the decision, method, risk, and required segment coverage. Do not imply that a convenience sample represents the full market.",
+    "demographic_safeguard": "Collect demographic attributes only when necessary for the research question. Apply appropriate safeguards and qualified review for minors, vulnerable populations, or sensitive contexts."
+  },
+  "metrics": {
+    "summary_cards": [
+      {"id": "enrolled", "label": "Participants enrolled", "value": 0, "target": 0, "unit": "people"},
+      {"id": "activation", "label": "Activation rate", "value": 0, "target": 0, "unit": "percent"},
+      {"id": "task_success", "label": "Core task success", "value": 0, "target": 0, "unit": "percent"},
+      {"id": "open_high_issues", "label": "Open high-severity issues", "value": 0, "target": 0, "unit": "issues"}
+    ],
+    "definitions": [
+      {
+        "id": "M1",
+        "name": "{{METRIC_NAME}}",
+        "category": "{{ACTIVATION | TASK_SUCCESS | RELIABILITY | ENGAGEMENT | QUALITY | EXPERIENCE | ACCESS}}",
+        "definition": "{{NUMERATOR_DENOMINATOR_AND_ELIGIBLE_POPULATION}}",
+        "baseline": null,
+        "target": null,
+        "guardrail": "{{STOP_OR_ESCALATION_THRESHOLD}}",
+        "data_source": "{{ANALYTICS_EVENT_SURVEY_SUPPORT_OR_RESEARCH}}",
+        "owner": "{{OWNER}}",
+        "review_cadence": "{{DAILY | WEEKLY | MILESTONE}}",
+        "segment_breakdown": ["{{RELEVANT_SEGMENTS}}"]
+      }
+    ],
+    "interpretation_guidance": "Define metrics and thresholds before launch, report denominators and missing data, and interpret small segment samples cautiously. Satisfaction alone is not proof of release readiness or product-market fit."
+  },
+  "test_plan": {
+    "scenarios": [
+      {
+        "id": "T1",
+        "name": "{{SCENARIO_NAME}}",
+        "linked_goal_ids": ["G1"],
+        "participant_segment_ids": ["S1"],
+        "preconditions": "{{BUILD_ACCOUNT_DATA_OR_SETUP}}",
+        "task_prompt": "{{NEUTRAL_TASK_INSTRUCTION}}",
+        "success_criteria": "{{OBSERVABLE_SUCCESS_SIGNAL}}",
+        "method": "{{MODERATED | UNMODERATED | TELEMETRY | SURVEY | SUPPORT_FEEDBACK}}",
+        "evidence_source": "{{SOURCE}}",
+        "owner": "{{OWNER}}"
+      }
+    ],
+    "coverage": ["Core functionality", "Onboarding", "Usability", "Accessibility", "Device and network variation", "Performance and reliability", "Data integrity", "Privacy and security controls", "Localization", "Failure recovery"],
+    "environment": {
+      "build_or_version": "{{VERSION}}",
+      "environment_url": "{{URL_OR_APP_DISTRIBUTION_METHOD}}",
+      "supported_platforms": ["{{PLATFORM}}"],
+      "feature_flag_owner": "{{OWNER}}",
+      "test_data_and_reset_policy": "{{POLICY}}",
+      "rollback_procedure": "{{PROCEDURE}}"
+    }
+  },
+  "issues": {
+    "severity_definitions": [
+      {"level": "S0", "label": "Critical", "definition": "Safety, security, data loss, or widespread outage", "response": "Stop or contain and escalate immediately"},
+      {"level": "S1", "label": "High", "definition": "Core journey blocked or major user impact", "response_target": "{{TARGET}}"},
+      {"level": "S2", "label": "Moderate", "definition": "Workaround exists; impact is limited", "response_target": "{{TARGET}}"},
+      {"level": "S3", "label": "Low", "definition": "Minor issue or suggestion", "response_target": "{{TRIAGE_CADENCE}}"}
+    ],
+    "items": [
+      {
+        "id": "{{ISSUE_ID}}",
+        "title": "{{SHORT_TITLE}}",
+        "status": "{{NEW | TRIAGED | IN_PROGRESS | FIXED | VERIFIED | CLOSED}}",
+        "severity": "{{S0 | S1 | S2 | S3}}",
+        "owner": "{{OWNER}}",
+        "reported_at": "{{YYYY-MM-DDTHH:MM:SSZ}}",
+        "participant_segment": "{{SEGMENT}}",
+        "build_device_and_os": "{{ENVIRONMENT}}",
+        "steps_to_reproduce": ["{{STEP}}"],
+        "expected_result": "{{EXPECTED}}",
+        "actual_result": "{{ACTUAL}}",
+        "impact_and_workaround": "{{IMPACT}}",
+        "security_privacy_or_safety_escalation": false,
+        "next_update_at": "{{YYYY-MM-DDTHH:MM:SSZ}}"
+      }
+    ],
+    "feedback_channels": ["{{IN_APP_FORM_EMAIL_COMMUNITY_OR_RESEARCH_SESSION}}"],
+    "support_hours_and_sla": "{{HOURS_AND_EXPECTED_RESPONSE}}",
+    "triage_cadence": "{{CADENCE}}",
+    "workflow": ["Acknowledge and log", "Reproduce and assess impact", "Assign severity and owner", "Escalate critical issues through incident response", "Update participant and verify resolution"]
+  },
+  "privacy_security_and_safety": {
+    "data_collected_and_purpose": ["{{DATA_AND_PURPOSE}}"],
+    "data_not_collected": ["{{EXCLUSIONS}}"],
+    "consent_and_privacy_notice_url": "{{URL_OR_DOCUMENT_REFERENCE}}",
+    "withdrawal_process": "{{PROCESS}}",
+    "retention_and_deletion_policy": "{{POLICY}}",
+    "access_controls_and_vendors": "{{DETAILS}}",
+    "jurisdictions_and_required_reviews": ["{{JURISDICTION_AND_REVIEW_STATUS}}"],
+    "security_reporting_channel": "{{CHANNEL}}",
+    "incident_owner_and_escalation": "{{OWNER_AND_PROCESS}}",
+    "stop_test_conditions": ["{{SECURITY_PRIVACY_SAFETY_DATA_LOSS_OR_SERVICE_THRESHOLD}}"],
+    "guidance": "Collect only necessary data. Do not use confidential production data in beta environments unless explicitly approved and protected. Obtain qualified review for applicable legal, privacy, security, and regulatory obligations; this template is not legal advice."
+  },
+  "timeline": [
+    {"milestone": "Charter and risk review", "planned_date": "{{YYYY-MM-DD}}", "status": "{{NOT_STARTED | IN_PROGRESS | COMPLETE | BLOCKED}}", "owner": "{{OWNER}}", "exit_criteria": "{{CRITERIA}}"},
+    {"milestone": "Internal readiness and pilot", "planned_date": "{{YYYY-MM-DD}}", "status": "{{STATUS}}", "owner": "{{OWNER}}", "exit_criteria": "{{CRITERIA}}"},
+    {"milestone": "Recruitment and onboarding", "planned_date": "{{YYYY-MM-DD}}", "status": "{{STATUS}}", "owner": "{{OWNER}}", "exit_criteria": "{{CRITERIA}}"},
+    {"milestone": "Beta launch", "planned_date": "{{YYYY-MM-DD}}", "status": "{{STATUS}}", "owner": "{{OWNER}}", "exit_criteria": "{{CRITERIA}}"},
+    {"milestone": "Expand, pause, or rollback checkpoint", "planned_date": "{{YYYY-MM-DD}}", "status": "{{STATUS}}", "owner": "{{OWNER}}", "exit_criteria": "{{CRITERIA}}"},
+    {"milestone": "Analysis and decision", "planned_date": "{{YYYY-MM-DD}}", "status": "{{STATUS}}", "owner": "{{OWNER}}", "exit_criteria": "{{CRITERIA}}"}
+  ],
+  "governance": {
+    "decision_owner": "{{ROLE_OR_NAME}}",
+    "approvers": ["{{ROLE}}"],
+    "workstream_owners": {
+      "product_and_scope": "{{OWNER}}",
+      "recruitment_and_research": "{{OWNER}}",
+      "engineering_and_quality": "{{OWNER}}",
+      "analytics": "{{OWNER}}",
+      "privacy_security_and_compliance": "{{OWNER}}",
+      "participant_support_and_communications": "{{OWNER}}"
+    },
+    "operational_triage_cadence": "{{CADENCE}}",
+    "program_review_cadence": "{{CADENCE}}",
+    "decision_log_location": "{{LINK_OR_LOCATION}}"
+  },
+  "release_decision": {
+    "options": ["PROCEED", "PROCEED_WITH_CONDITIONS", "EXTEND_BETA", "PAUSE_OR_ROLLBACK", "STOP"],
+    "success_criteria": ["{{PREDEFINED_CRITERION}}"],
+    "guardrails_and_stop_thresholds": ["{{THRESHOLD}}"],
+    "minimum_evidence_required": "{{EVIDENCE}}",
+    "open_high_severity_issues": ["{{ISSUE_ID_AND_MITIGATION}}"],
+    "segment_specific_risks": ["{{RISK}}"],
+    "privacy_security_and_safety_status": "{{STATUS}}",
+    "sample_and_method_limitations": "{{LIMITATIONS}}",
+    "decision": "{{OPTION}}",
+    "rationale": "{{EVIDENCE_BASED_SUMMARY}}",
+    "conditions_owners_and_due_dates": ["{{CONDITION_OWNER_DATE}}"],
+    "approver_and_decision_timestamp": "{{NAME_AND_TIMESTAMP}}"
+  },
+  "participant_templates": {
+    "welcome_email": {
+      "subject": "You’re invited to try {{PRODUCT_NAME}} in beta",
+      "body": "Hello {{PARTICIPANT_NAME}},\n\nWe’re testing {{SCOPE}} with {{AUDIENCE}} to learn {{GOALS}}. The beta runs {{START_DATE}} through {{END_DATE}} and may contain defects or change during testing. Known limitations: {{LIMITATIONS}}.\n\nTo join: {{STEPS}}. Please review {{CONSENT_AND_PRIVACY_NOTICE}}. We collect {{DATA_SUMMARY}} for {{PURPOSE}}. For support, contact {{CHANNEL_AND_HOURS}}. For urgent safety, privacy, or security issues, contact {{ESCALATION_CHANNEL}}. Participation and withdrawal terms: {{TERMS}}. Incentive, if applicable: {{INCENTIVE_TERMS}}.\n\nThank you,\n{{TEAM_AND_CONTACT}}"
+    },
+    "issue_report_form": {
+      "title": "{{WHAT_HAPPENED}}",
+      "user_goal": "{{WHAT_WERE_YOU_TRYING_TO_DO}}",
+      "reproduction_steps": ["{{STEP}}"],
+      "expected": "{{EXPECTED}}",
+      "actual": "{{ACTUAL}}",
+      "impact_or_workaround": "{{IMPACT}}",
+      "date_time_timezone": "{{WHEN}}",
+      "app_build_device_os_browser_network": "{{ENVIRONMENT}}",
+      "attachment_note": "Remove personal information, passwords, tokens, and other secrets before attaching files.",
+      "permission_for_follow_up": "{{YES_OR_NO}}"
+    },
+    "weekly_pulse_survey": [
+      "What were you trying to accomplish this week?",
+      "Were you able to complete it? If partly or not, what got in the way?",
+      "What was confusing, slow, or difficult?",
+      "Did anything feel unsafe, unexpected, or concerning?",
+      "What should we improve first?",
+      "May we contact you for follow-up?"
+    ]
+  },
+  "closeout_checklist": [
+    "Notify and thank participants; explain access and account changes.",
+    "Close or archive feedback channels and share known-issue updates.",
+    "Apply data retention and deletion policy and revoke unnecessary access.",
+    "Record findings, limitations, decisions, and follow-up owners.",
+    "Share participant-facing outcomes only when approved; do not promise unapproved features or dates."
+  ],
+  "integration_notes": {
+    "css_file": "beta_dashboard.css",
+    "css_class_prefix": "bt-",
+    "data_binding": "Map dashboard fields and arrays to the existing application markup or frontend framework. This JSON is content and configuration; it does not by itself render a user interface.",
+    "customization": "Replace {{PLACEHOLDERS}}, define actual metric thresholds and dates, remove unused fields, and validate the final JSON with the consuming application’s schema."
+  }
+}

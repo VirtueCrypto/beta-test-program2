@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/beta-testing-dashboard.schema.json",
+  "title": "Beta Testing Program Dashboard Data",
+  "description": "Schema for the configurable content and metrics powering a beta testing program dashboard.",
+  "type": "object",
+  "required": ["schema_version", "dashboard", "program_documentation", "participants", "metrics", "test_plan", "issues", "timeline", "release_decision"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "dashboard": {"type": "object", "required": ["title", "project_name", "status"], "properties": {"title": {"type": "string"}, "project_name": {"type": "string"}, "product_area": {"type": "string"}, "program_owner": {"type": "string"}, "status": {"type": "string", "enum": ["PLANNING", "RECRUITING", "ACTIVE", "PAUSED", "COMPLETE"]}, "beta_type": {"type": "string"}, "start_date": {"type": "string"}, "end_date": {"type": "string"}, "decision_date": {"type": "string"}, "last_updated": {"type": "string"}, "summary": {"type": "string"}, "navigation": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": true},
+    "program_documentation": {"type": "object", "required": ["purpose", "in_scope", "out_of_scope", "program_goals"], "properties": {"purpose": {"type": "string"}, "business_context": {"type": "string"}, "product_hypothesis": {"type": "string"}, "in_scope": {"type": "array", "items": {"type": "string"}}, "out_of_scope": {"type": "array", "items": {"type": "string"}}, "known_limitations": {"type": "array", "items": {"type": "string"}}, "assumptions": {"type": "array", "items": {"type": "string"}}, "dependencies": {"type": "array", "items": {"type": "string"}}, "constraints": {"type": "array", "items": {"type": "string"}}, "program_goals": {"type": "array", "items": {"type": "object", "required": ["id", "name", "hypothesis"], "properties": {"id": {"type": "string"}, "name": {"type": "string"}, "hypothesis": {"type": "string"}, "evidence_needed": {"type": "string"}, "decision_informed": {"type": "string"}, "priority": {"type": "string"}}, "additionalProperties": true}}}, "additionalProperties": true},
+    "participants": {"type": "object", "required": ["target_enrollment", "segments"], "properties": {"target_enrollment": {"type": "integer", "minimum": 0}, "minimum_enrollment": {"type": "integer", "minimum": 0}, "maximum_enrollment": {"type": "integer", "minimum": 0}, "enrolled": {"type": "integer", "minimum": 0}, "active": {"type": "integer", "minimum": 0}, "withdrawn": {"type": "integer", "minimum": 0}, "segments": {"type": "array", "items": {"type": "object", "required": ["segment_id", "name"], "properties": {"segment_id": {"type": "string"}, "name": {"type": "string"}, "needs_and_context": {"type": "string"}, "relevance_to_goal": {"type": "string"}, "target_count": {"type": "integer", "minimum": 0}, "enrolled_count": {"type": "integer", "minimum": 0}, "eligibility": {"type": "array", "items": {"type": "string"}}, "recruitment_channel": {"type": "string"}}, "additionalProperties": true}}, "representation_dimensions": {"type": "object"}, "recruitment": {"type": "object"}}, "additionalProperties": true},
+    "metrics": {"type": "object", "properties": {"summary_cards": {"type": "array", "items": {"type": "object", "required": ["id", "label", "value"], "properties": {"id": {"type": "string"}, "label": {"type": "string"}, "value": {"type": "number"}, "target": {"type": ["number", "null"]}, "unit": {"type": "string"}}, "additionalProperties": true}}, "definitions": {"type": "array", "items": {"type": "object"}}}, "additionalProperties": true},
+    "test_plan": {"type": "object", "properties": {"scenarios": {"type": "array", "items": {"type": "object"}}, "coverage": {"type": "array", "items": {"type": "string"}}, "environment": {"type": "object"}}, "additionalProperties": true},
+    "issues": {"type": "object", "properties": {"severity_definitions": {"type": "array", "items": {"type": "object"}}, "items": {"type": "array", "items": {"type": "object"}}}, "additionalProperties": true},
+    "privacy_security_and_safety": {"type": "object"},
+    "timeline": {"type": "array", "items": {"type": "object", "required": ["milestone", "planned_date"], "properties": {"milestone": {"type": "string"}, "planned_date": {"type": "string"}, "status": {"type": "string"}, "owner": {"type": "string"}, "exit_criteria": {"type": "string"}}, "additionalProperties": true}},
+    "governance": {"type": "object"},
+    "release_decision": {"type": "object", "required": ["decision", "success_criteria"], "properties": {"options": {"type": "array", "items": {"type": "string"}}, "success_criteria": {"type": "array", "items": {"type": "string"}}, "decision": {"type": "string", "enum": ["{{OPTION}}", "PROCEED", "PROCEED_WITH_CONDITIONS", "EXTEND_BETA", "PAUSE_OR_ROLLBACK", "STOP"]}, "rationale": {"type": "string"}}, "additionalProperties": true},
+    "participant_templates": {"type": "object"},
+    "closeout_checklist": {"type": "array", "items": {"type": "string"}},
+    "integration_notes": {"type": "object"}
+  },
+  "additionalProperties": true
+}
